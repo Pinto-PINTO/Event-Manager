@@ -51,9 +51,47 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
       $(function () {
-        $("#sidenav").load("./components/reusable-components/side-nav.html");
+          $.get("./components/reusable-components/side-nav.html", function (data) {
+              var sidenavHtml = data;
+
+              // Dashboard
+              sidenavHtml = sidenavHtml.replace("{{indexHref1}}", "./index.html");
+              sidenavHtml = sidenavHtml.replace("{{indexHref2}}", "./index.html");
+              sidenavHtml = sidenavHtml.replace("{{sidebarLogoHref}}", "./assets/img/logo-ct-dark.png");
+
+              // Events - Birthday
+              sidenavHtml = sidenavHtml.replace("{{birthdayChartHref}}", "./pages/pages/charts.html");
+              sidenavHtml = sidenavHtml.replace("{{birthdayBudgetHref}}", "./pages/pages/rtl-page.html");
+              sidenavHtml = sidenavHtml.replace("{{birthdayExpenseTrackerHref}}", "./pages/pages/widgets.html");
+
+              // Events - Half Day Events
+              sidenavHtml = sidenavHtml.replace("{{afternoonEventsHref}}", "./pages/applications/kanban.html");
+              sidenavHtml = sidenavHtml.replace("{{afternoonLocationsHref}}", "./pages/applications/wizard.html");
+              sidenavHtml = sidenavHtml.replace("{{afternoonBudgetHref}}", "./pages/applications/datatables.html");
+
+              // Events - Full Day Events
+              sidenavHtml = sidenavHtml.replace("{{dayEventsHref}}", "./pages/applications/kanban.html");
+              sidenavHtml = sidenavHtml.replace("{{dayLocationsHref}}", "./pages/applications/wizard.html");
+              sidenavHtml = sidenavHtml.replace("{{dayBudgetHref}}", "./pages/applications/datatables.html");
+
+              // Events - Charity
+              sidenavHtml = sidenavHtml.replace("{{charityMainHref}}", "./pages/applications/kanban.html");
+              sidenavHtml = sidenavHtml.replace("{{charityManagerHref}}", "./pages/applications/wizard.html");
+              sidenavHtml = sidenavHtml.replace("{{charityBudgetHref}}", "./pages/applications/datatables.html");
+
+              // Events - Trainings
+              sidenavHtml = sidenavHtml.replace("{{trainingMainHref}}", "./pages/applications/kanban.html");
+
+              // Extra 
+              sidenavHtml = sidenavHtml.replace("{{eventCalendarHref}}", "./components/extra/event-calendar/event-calendar.html");
+              sidenavHtml = sidenavHtml.replace("{{employeesHref}}", "./pages/applications/wizard.html");
+              sidenavHtml = sidenavHtml.replace("{{paymentHref}}", "./pages/applications/datatables.html");
+              sidenavHtml = sidenavHtml.replace("{{permissionsHref}}", "./pages/applications/datatables.html");
+
+              $("#sidenav").html(sidenavHtml);
+          });
       });
-    </script>
+  </script>
   </head>
 
   <body class="g-sidenav-show bg-gray-100">
